@@ -1,0 +1,6 @@
+Crear una pagina en Angular o ReactJs de tipo CRUD incluyendo una caja de búsqueda. Utilizar Bootstrap, SCSS, y metodología BEM.
+Elementos requeridos:
+	- Lista con opcion de editar y eliminar
+	- caja de búsqueda
+	- Boton agregar
+	- Formulario 
