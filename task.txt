@@ -3,4 +3,4 @@ Elementos requeridos:
 	- Lista con opcion de editar y eliminar
 	- caja de búsqueda
 	- Boton agregar
-	- Formulario 
+	- Formulario
