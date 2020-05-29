@@ -56,7 +56,7 @@ class Agregar extends React.Component {
                     <div className="modal-content">
                         <form onSubmit={this.handleSubmit}>
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">New Member</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Nuevo Usuario</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -65,13 +65,13 @@ class Agregar extends React.Component {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <label>Name</label>
+                                        <label>Nombres</label>
                                         <input type="text" className="form-control" id="name" value={this.state.nombre} onChange={this.nombreHandleChange} />
-                                        <label>Age</label>
+                                        <label>Edad</label>
                                         <input type="text" className="form-control" id="age" value={this.state.edad}  onChange={this.edadHandleChange} />
                                     </div>
                                     <div className="col-md-6">
-                                        <label>Lastname</label>
+                                        <label>Apellidos</label>
                                         <input type="text" className="form-control" id="apellido" value={this.state.apellido}  onChange={this.apellidoHandleChange} />
                                         <label>RUT</label>
                                         <input type="text" className="form-control" id="rut" value={this.state.rut}  onChange={this.rutHandleChange}/>

@@ -28,15 +28,10 @@ class App extends React.Component {
     this.setState({ currentUser: user })
   }
 
-  modifyUser = (e) => {
-    this.setState((prevState) => {
-      let currentUser = Object.assign({}, prevState.currentUser);
-      currentUser.nombre = e.target.value;
-      currentUser.apellido = e.target.value;
-      currentUser.edad = e.target.value;
-      currentUser.rut = e.target.value;
-      return { currentUser };
-    })
+  modifyUser = (currentUser) => {
+    this.setState({
+      currentUser: [this.state.currentUser, currentUser]
+    });
   }
 
   trash(y) {
@@ -77,12 +72,12 @@ class App extends React.Component {
                 <thead>
                   <tr>
                     <th scope="col">No.</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Age</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Edad</th>
                     <th scope="col">RUT</th>
                     <th scope="col"><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#agregarmodal">
-                      Insert
+                      Agregar
                     </button></th>
                   </tr>
                 </thead>

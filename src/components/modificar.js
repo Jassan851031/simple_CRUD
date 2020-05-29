@@ -65,7 +65,7 @@ class Modificar extends React.Component {
                     <div className="modal-content">
                         <form onSubmit={this.handleModifySubmit}>
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Modify Member</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Modificar Usuario</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -74,15 +74,14 @@ class Modificar extends React.Component {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <label>Name{this.props.currentUser.nombre}</label>
+                                            <label>Nombres</label>
                                             <input type="text" className="form-control" id="name" defaultValue={this.props.currentUser.nombre} onChange={this.nombreHandleChange} />
-                                            <label>Lastname</label>
-                                            <input type="text" className="form-control" id="apellido" defaultValue={this.props.currentUser.apellido} onChange={this.apellidoHandleChange} />
-                                            
+                                            <label>Edad</label>
+                                            <input type="text" className="form-control" id="age" defaultValue={this.props.currentUser.edad} onChange={this.edadHandleChange} />
                                         </div>
                                         <div className="col-md-6">
-                                        <label>Age</label>
-                                            <input type="text" className="form-control" id="age" defaultValue={this.props.currentUser.edad} onChange={this.edadHandleChange} />
+                                            <label>Apellidos</label>
+                                            <input type="text" className="form-control" id="apellido" defaultValue={this.props.currentUser.apellido} onChange={this.apellidoHandleChange} />
                                             <label>RUT</label>
                                             <input type="text" className="form-control" id="rut" defaultValue={this.props.currentUser.rut} onChange={this.rutHandleChange} />
                                         </div>
@@ -90,8 +89,8 @@ class Modificar extends React.Component {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary">Update</button>
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" className="btn btn-primary">Guardar</button>
                             </div>
                         </form>
                     </div>
