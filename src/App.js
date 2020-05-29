@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       users: [],
-      currentUser: '',
+      currentUser: {},
       filter: ''
     }
   };
@@ -22,20 +22,22 @@ class App extends React.Component {
     this.setState({
       users: [...this.state.users, user]
     });
-    console.log(this.state.users);
   }
 
-  getState = (event, i) => {
-    this.setState({currentUser: event.target.user})
-
-    console.log(event.target.user)
+  getUser = (user) => {
+    this.setState({ currentUser: user })
   }
 
-  // modifyUser(event) {
-  //     const {users} = this.state;
-  //     this.setState({users: event.target.value});
-
-  //   }
+  modifyUser = (e) => {
+    this.setState((prevState) => {
+      let currentUser = Object.assign({}, prevState.currentUser);
+      currentUser.nombre = e.target.value;
+      currentUser.apellido = e.target.value;
+      currentUser.edad = e.target.value;
+      currentUser.rut = e.target.value;
+      return { currentUser };
+    })
+  }
 
   trash(y) {
     const { users } = this.state;
@@ -44,7 +46,7 @@ class App extends React.Component {
       users: users
     })
   }
-  
+
   handleChange = event => {
     this.setState({ filter: event.target.value });
   };
@@ -61,7 +63,7 @@ class App extends React.Component {
     return (
       <>
         <Agregar addUser={this.addUser} />
-        <Modificar />
+        <Modificar currentUser={this.state.currentUser} modifyUser={this.modifyUser} />
         <div className="container d-flex justify-content-center">
           <div className="row">
             <div className="table-responsive-md">
@@ -93,7 +95,7 @@ class App extends React.Component {
                         <td> {user.apellido}</td>
                         <td> {user.edad}</td>
                         <td> {user.rut}</td>
-                        <td><button className="btn btn-dark btn-block border-white" data-toggle="modal" data-target='#modifyModal' onClick={this.getState}>Modify</button></td>
+                        <td><button className="btn btn-dark btn-block border-white" data-toggle="modal" data-target='#modifyModal' onClick={() => this.getUser(user)}>Modify</button></td>
                         <td><button className="btn btn-danger btn-block" data-toggle="modal" data-target="#staticBackdrop" onClick={y => this.trash(i)}><i className="fa fa-trash"></i></button></td>
                       </tr>
                     ))

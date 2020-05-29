@@ -5,19 +5,26 @@ class Modificar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            nombre: props.nombre,
-            apellido: props.apellido,
-            edad: props.edad,
-            rut: props.rut
+            nombre: null,
+            apellido: null,
+            edad: null,
+            rut: null
         };
-        //console.log(this.state.nombre);
+    }
+
+    componentDidMount() {
+        this.setState({
+            nombre: this.props.currentUser.nombre,
+            apellido: this.props.currentUser.apellido,
+            edad: this.props.currentUser.edad,
+            rut: this.props.currentUser.rut
+        })
     }
 
     nombreHandleChange = event => {
         this.setState({
             nombre: event.target.value
         })
-        //console.log(this.nombre)
     }
 
     apellidoHandleChange = event => {
@@ -38,9 +45,9 @@ class Modificar extends React.Component {
         })
     }
 
-    handleSubmit = event => {
+    handleModifySubmit = event => {
         event.preventDefault();
-        this.props.addUser(this.state);
+        this.props.modifyUser(this.state);
         this.setState(
             {
                 nombre: '',
@@ -49,43 +56,43 @@ class Modificar extends React.Component {
                 rut: ''
             }
         )
-      }
+    }
 
     render() {
-
         return (
             <div className="modal fade" id="modifyModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <form onSubmit={this.handleSubmit}>
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Modify Member</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>Name</label>
-                                        <input type="text" className="form-control" id="name" placeholder={this.props.nombre} onChange={this.nombreHandleChange} />
+                        <form onSubmit={this.handleModifySubmit}>
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Modify Member</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <label>Name{this.props.currentUser.nombre}</label>
+                                            <input type="text" className="form-control" id="name" defaultValue={this.props.currentUser.nombre} onChange={this.nombreHandleChange} />
+                                            <label>Lastname</label>
+                                            <input type="text" className="form-control" id="apellido" defaultValue={this.props.currentUser.apellido} onChange={this.apellidoHandleChange} />
+                                            
+                                        </div>
+                                        <div className="col-md-6">
                                         <label>Age</label>
-                                        <input type="text" className="form-control" id="age" placeholder={this.props.edad}  onChange={this.edadHandleChange} />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <label>Lastname</label>
-                                        <input type="text" className="form-control" id="apellido" placeholder={this.props.apellido}  onChange={this.apellidoHandleChange} />
-                                        <label>RUT</label>
-                                        <input type="text" className="form-control" id="rut" placeholder={this.props.rut}  onChange={this.rutHandleChange}/>
+                                            <input type="text" className="form-control" id="age" defaultValue={this.props.currentUser.edad} onChange={this.edadHandleChange} />
+                                            <label>RUT</label>
+                                            <input type="text" className="form-control" id="rut" defaultValue={this.props.currentUser.rut} onChange={this.rutHandleChange} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary">Update</button>
-                        </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary">Update</button>
+                            </div>
                         </form>
                     </div>
                 </div>
