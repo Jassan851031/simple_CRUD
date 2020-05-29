@@ -1,21 +1,23 @@
 import React from 'react'
 
-class Agregar extends React.Component {
+class Modificar extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-                nombre: '',
-                apellido: '',
-                edad: '',
-                rut: ''
+            nombre: props.nombre,
+            apellido: props.apellido,
+            edad: props.edad,
+            rut: props.rut
         };
+        //console.log(this.state.nombre);
     }
 
     nombreHandleChange = event => {
         this.setState({
             nombre: event.target.value
         })
+        //console.log(this.nombre)
     }
 
     apellidoHandleChange = event => {
@@ -50,13 +52,14 @@ class Agregar extends React.Component {
       }
 
     render() {
+
         return (
-            <div className="modal fade" id="agregarmodal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="modifyModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <form onSubmit={this.handleSubmit}>
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">New Member</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Modify Member</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -66,22 +69,22 @@ class Agregar extends React.Component {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <label>Name</label>
-                                        <input type="text" className="form-control" id="name" value={this.state.nombre} onChange={this.nombreHandleChange} />
+                                        <input type="text" className="form-control" id="name" placeholder={this.props.nombre} onChange={this.nombreHandleChange} />
                                         <label>Age</label>
-                                        <input type="text" className="form-control" id="age" value={this.state.edad}  onChange={this.edadHandleChange} />
+                                        <input type="text" className="form-control" id="age" placeholder={this.props.edad}  onChange={this.edadHandleChange} />
                                     </div>
                                     <div className="col-md-6">
                                         <label>Lastname</label>
-                                        <input type="text" className="form-control" id="apellido" value={this.state.apellido}  onChange={this.apellidoHandleChange} />
+                                        <input type="text" className="form-control" id="apellido" placeholder={this.props.apellido}  onChange={this.apellidoHandleChange} />
                                         <label>RUT</label>
-                                        <input type="text" className="form-control" id="rut" value={this.state.rut}  onChange={this.rutHandleChange}/>
+                                        <input type="text" className="form-control" id="rut" placeholder={this.props.rut}  onChange={this.rutHandleChange}/>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary">Save changes</button>
+                            <button type="submit" className="btn btn-primary">Update</button>
                         </div>
                         </form>
                     </div>
@@ -91,4 +94,4 @@ class Agregar extends React.Component {
     }
 }
 
-export default Agregar;
+export default Modificar;

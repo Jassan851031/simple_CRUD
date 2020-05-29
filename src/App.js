@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
 import Agregar from './components/agregar';
+import Modificar from './components/modificar';
 
 
+//const [data, getDataState] = useState()
 
 class App extends React.Component {
 
@@ -10,6 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       users: [],
+      currentUser: '',
       filter: ''
     }
   };
@@ -19,11 +22,20 @@ class App extends React.Component {
     this.setState({
       users: [...this.state.users, user]
     });
+    console.log(this.state.users);
   }
 
-  handleChange = event => {
-    this.setState({ filter: event.target.value });
-  };
+  getState = (event, i) => {
+    this.setState({currentUser: event.target.user})
+
+    console.log(event.target.user)
+  }
+
+  // modifyUser(event) {
+  //     const {users} = this.state;
+  //     this.setState({users: event.target.value});
+
+  //   }
 
   trash(y) {
     const { users } = this.state;
@@ -32,6 +44,10 @@ class App extends React.Component {
       users: users
     })
   }
+  
+  handleChange = event => {
+    this.setState({ filter: event.target.value });
+  };
 
   render() {
 
@@ -45,6 +61,7 @@ class App extends React.Component {
     return (
       <>
         <Agregar addUser={this.addUser} />
+        <Modificar />
         <div className="container d-flex justify-content-center">
           <div className="row">
             <div className="table-responsive-md">
@@ -62,7 +79,7 @@ class App extends React.Component {
                     <th scope="col">Lastname</th>
                     <th scope="col">Age</th>
                     <th scope="col">RUT</th>
-                    <th scope="col"><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <th scope="col"><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#agregarmodal">
                       Insert
                     </button></th>
                   </tr>
@@ -76,7 +93,7 @@ class App extends React.Component {
                         <td> {user.apellido}</td>
                         <td> {user.edad}</td>
                         <td> {user.rut}</td>
-                        <td><button className="btn btn-dark btn-block border-white" data-toggle="modal">Modify</button></td>
+                        <td><button className="btn btn-dark btn-block border-white" data-toggle="modal" data-target='#modifyModal' onClick={this.getState}>Modify</button></td>
                         <td><button className="btn btn-danger btn-block" data-toggle="modal" data-target="#staticBackdrop" onClick={y => this.trash(i)}><i className="fa fa-trash"></i></button></td>
                       </tr>
                     ))
