@@ -2,46 +2,12 @@ import React from 'react'
 
 class Modificar extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            nombre: null,
-            apellido: null,
-            edad: null,
-            rut: null
-        };
-    }
-
     componentDidMount() {
         this.setState({
             nombre: this.props.currentUser.nombre,
             apellido: this.props.currentUser.apellido,
             edad: this.props.currentUser.edad,
             rut: this.props.currentUser.rut
-        })
-    }
-
-    nombreHandleChange = event => {
-        this.setState({
-            nombre: event.target.value
-        })
-    }
-
-    apellidoHandleChange = event => {
-        this.setState({
-            apellido: event.target.value
-        })
-    }
-
-    edadHandleChange = event => {
-        this.setState({
-            edad: event.target.value
-        })
-    }
-
-    rutHandleChange = event => {
-        this.setState({
-            rut: event.target.value
         })
     }
 

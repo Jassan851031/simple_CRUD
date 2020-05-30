@@ -3,9 +3,6 @@ import './App.css';
 import Agregar from './components/agregar';
 import Modificar from './components/modificar';
 
-
-//const [data, getDataState] = useState()
-
 class App extends React.Component {
 
   constructor(props) {
@@ -17,7 +14,6 @@ class App extends React.Component {
     }
   };
 
-
   addUser = (user) => {
     this.setState({
       users: [...this.state.users, user]
@@ -28,10 +24,9 @@ class App extends React.Component {
     this.setState({ currentUser: user })
   }
 
-  modifyUser = (currentUser) => {
-    this.setState({
-      currentUser: [this.state.currentUser, currentUser]
-    });
+  modifyUser = () => {
+    const {users} = this.state;
+    this.setState({ users: users });
   }
 
   trash(y) {
@@ -47,7 +42,6 @@ class App extends React.Component {
   };
 
   render() {
-
     const { filter, users } = this.state;
     const lowercasedFilter = filter.toLowerCase();
     const filteredData = users.filter(item => {
@@ -55,6 +49,7 @@ class App extends React.Component {
         item[key].toLowerCase().includes(lowercasedFilter)
       );
     });
+
     return (
       <>
         <Agregar addUser={this.addUser} />
