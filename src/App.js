@@ -25,11 +25,10 @@ class App extends React.Component {
     this.setState({ currentUser: user })
   }
 
-  modifyUser = () => {
-    const {users} = this.state;
-    console.log('wewewewe', this.state);
-    this.setState({ users: users });
-    console.log(this.state);
+  modifyUser = (user) => {
+    this.setState({
+      users: [this.state.currentUser, user]
+    });
   }
 
   trash(y) {
@@ -45,6 +44,7 @@ class App extends React.Component {
   };
 
   render() {
+    //filter start here
     const { filter, users } = this.state;
     const lowercasedFilter = filter.toLowerCase();
     const filteredData = users.filter(item => {
@@ -52,6 +52,7 @@ class App extends React.Component {
         item[key].toLowerCase().includes(lowercasedFilter)
       );
     });
+    //filter end here
 
     return (
       <>
@@ -89,7 +90,7 @@ class App extends React.Component {
                         <td> {user.edad}</td>
                         <td> {user.rut}</td>
                         <td><button className="btn btn-dark btn-block border-white" data-toggle="modal" data-target='#modifyModal' onClick={() => this.getUser(user)}>Modify</button></td>
-                        <td><button className="btn btn-danger btn-block" data-toggle="modal" data-target="#staticBackdrop" onClick={y => this.trash(i)}><i className="fa fa-trash"></i></button></td>
+                        <td><button className="btn btn-danger btn-block" data-toggle="modal" data-target="#staticBackdrop" onClick={() => this.trash(i)}><i className="fa fa-trash"></i></button></td>
                       </tr>
                     ))
                   }

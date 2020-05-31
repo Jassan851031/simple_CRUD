@@ -46,7 +46,6 @@ class Modificar extends React.Component {
                 rut: ''
             }
         )
-        console.log(this.props.nombre)
     }
 
     render() {
