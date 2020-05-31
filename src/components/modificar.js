@@ -11,6 +11,30 @@ class Modificar extends React.Component {
         })
     }
 
+    nombreHandleChange = event => {
+        this.setState({
+            nombre: event.target.value
+        })
+    }
+
+    apellidoHandleChange = event => {
+        this.setState({
+            apellido: event.target.value
+        })
+    }
+
+    edadHandleChange = event => {
+        this.setState({
+            edad: event.target.value
+        })
+    }
+
+    rutHandleChange = event => {
+        this.setState({
+            rut: event.target.value
+        })
+    }
+
     handleModifySubmit = event => {
         event.preventDefault();
         this.props.modifyUser(this.state);
@@ -22,6 +46,7 @@ class Modificar extends React.Component {
                 rut: ''
             }
         )
+        console.log(this.props.nombre)
     }
 
     render() {

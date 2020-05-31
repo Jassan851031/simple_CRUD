@@ -14,6 +14,7 @@ class App extends React.Component {
     }
   };
 
+
   addUser = (user) => {
     this.setState({
       users: [...this.state.users, user]
@@ -26,7 +27,9 @@ class App extends React.Component {
 
   modifyUser = () => {
     const {users} = this.state;
+    console.log('wewewewe', this.state);
     this.setState({ users: users });
+    console.log(this.state);
   }
 
   trash(y) {
